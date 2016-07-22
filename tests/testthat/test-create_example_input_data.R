@@ -12,6 +12,18 @@ test_that("rows", {
     expect_equal(rownames(data), row_names)
 })
 
-test_that("we get a data.frame", {
-    expect_equal(class(data), "data.frame")
+test_that("we get a matrix", {
+    expect_equal(class(data), "matrix")
+})
+
+test_that("we get a bunch of doubles", {
+    expect_equal(typeof(data), "double")
+})
+
+test_that("there are no missings", {
+    expect_false(anyNA(data))
+})
+
+test_that("there is variation in the data", {
+    expect_gt(var(as.vector(data)), 0)
 })
